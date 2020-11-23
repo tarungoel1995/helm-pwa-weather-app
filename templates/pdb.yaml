@@ -1,0 +1,10 @@
+apiVersion: policy/v1beta1
+kind: PodDisruptionBudget
+metadata:
+  name: {{ include "pwa-weather-app.fullname" . }}
+spec:
+  minAvailable: {{ .Values.minAvailable }}
+  selector:
+    matchLabels:
+      {{- include "pwa-weather-app.selectorLabels" . | nindent 8 }}
+
